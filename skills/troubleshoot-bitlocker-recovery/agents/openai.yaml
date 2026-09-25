@@ -1,0 +1,4 @@
+interface:
+  display_name: "Troubleshoot BitLocker recovery"
+  short_description: "Guide safe recovery loop triage"
+  default_prompt: "Help me troubleshoot a BitLocker recovery loop."

@@ -1,0 +1,27 @@
+name: Validate starter
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check skill metadata and Python scaffold
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          for file in sorted(Path('skills').glob('*/SKILL.md')):
+              text = file.read_text()
+              assert text.startswith('---\n'), file
+              header = text.split('---', 2)[1]
+              assert f'name: {file.parent.name}' in header, file
+              assert 'description:' in header, file
+          assert len(list(Path('skills').glob('*/SKILL.md'))) == 3
+          PY
+          python3 -m compileall -q mcp
+          python3 -m unittest discover -s tests -v

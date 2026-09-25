@@ -1,0 +1,4 @@
+interface:
+  display_name: "Troubleshoot Outlook sign-in"
+  short_description: "Guide safe Outlook authentication triage"
+  default_prompt: "Help me troubleshoot an Outlook sign-in problem."

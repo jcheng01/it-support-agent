@@ -1,0 +1,4 @@
+interface:
+  display_name: "Troubleshoot device trust"
+  short_description: "Guide Entra and Intune device access triage"
+  default_prompt: "Help me troubleshoot a device compliance access failure."
